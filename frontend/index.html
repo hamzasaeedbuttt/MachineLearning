@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quant Vista - AI Powered</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <span class="icon">📈</span>
+                    Quant Vista
+                </h1>
+                <p class="subtitle">AI-Powered Stock Analysis & Predictions</p>
+            </div>
+            <div class="api-status" id="apiStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting to FastAPI...</span>
+            </div>
+        </header>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="control-group">
+                <label for="numStocks" class="control-label">
+                    Number of Stocks to Analyze
+                    <span class="tooltip" data-tooltip="Select how many stocks to analyze. Free API tier takes ~12 seconds per stock.">ℹ️</span>
+                </label>
+                <div class="slider-container">
+                    <input type="range" id="numStocks" min="5" max="30" value="10" class="slider">
+                    <div class="slider-value">
+                        <span id="numStocksValue">10</span> stocks
+                    </div>
+                </div>
+                <div class="time-estimate" id="timeEstimate">
+                    ⏱️ Estimated time: ~2.0 minutes
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="customSymbols" class="control-label">
+                    Custom Stock Symbols (Optional)
+                    <span class="tooltip" data-tooltip="Enter comma-separated symbols (e.g., AAPL,MSFT,GOOGL). Leave empty for popular stocks.">ℹ️</span>
+                </label>
+                <input type="text" id="customSymbols" class="input-field" 
+                       placeholder="AAPL, MSFT, GOOGL" />
+            </div>
+
+            <button id="getRecommendations" class="btn-primary">
+                <span class="btn-icon">🚀</span>
+                Get Recommendations
+            </button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-container" id="loadingContainer" style="display: none;">
+            <div class="spinner"></div>
+            <p class="loading-text" id="loadingText">Fetching stock data...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-header">
+                <h2>Top Investment Opportunities</h2>
+                <div class="results-summary" id="resultsSummary"></div>
+            </div>
+
+            <!-- Top 3 Cards -->
+            <div class="top-cards" id="topCards"></div>
+
+            <!-- Full Table -->
+            <div class="table-container">
+                <table class="recommendations-table" id="recommendationsTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Symbol</th>
+                            <th>Current Price</th>
+                            <th>Predicted Price</th>
+                            <th>Predicted Change</th>
+                            <th>Predicted Change %</th>
+                            <th>Direction</th>
+                            <th>Data Drift</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <h3>How It Works</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">1️⃣</div>
+                    <h4>Fetch Live Data</h4>
+                    <p>Automatically retrieves real-time stock data from Alpha Vantage API</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">2️⃣</div>
+                    <h4>Calculate Features</h4>
+                    <p>Computes technical indicators: returns, moving averages, volatility</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">3️⃣</div>
+                    <h4>ML Predictions</h4>
+                    <p>Uses ensemble of 8+ ML models (Linear/Logistic Regression, Decision Trees, Random Forest, XGBoost, LightGBM, CatBoost) for accurate predictions</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">4️⃣</div>
+                    <h4>Rank & Recommend</h4>
+                    <p>Ranks stocks by predicted price increase and shows best opportunities</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">5️⃣</div>
+                    <h4>Data Drift Detection</h4>
+                    <p>Analyzes stock behavior vs training data to identify market regime changes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><strong>Disclaimer:</strong> This tool is for educational purposes only. Stock predictions are not guaranteed and past performance does not indicate future results. Always do your own research before investing.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pandas
+scikit-learn
+joblib
+requests
+pytest
+prefect
+scipy
+streamlit
+xgboost
+lightgbm
+catboost
+mangum
