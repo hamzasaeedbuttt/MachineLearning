@@ -1,0 +1,26 @@
+# Docker ignore file
+venv/
+ENV/
+env/
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.git/
+.gitignore
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+tests/
+*.md
+README*
+LAUNCH.bat
+CREATE_SHORTCUT.vbs
+*.vbs
+
